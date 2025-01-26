@@ -1,0 +1,1 @@
+<a {{ $attribtues }}>{{ $slot }}</a>
