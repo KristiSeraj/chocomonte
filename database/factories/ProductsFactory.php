@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -24,6 +25,7 @@ class ProductsFactory extends Factory
                 'Gold Swirls',
                 'Floral Drops',
             ]),
+            'category_id' => Category::factory(),
             'price' => $this->faker->numberBetween(8, 30),
             'style' => $this->faker->randomElement(['dangles', 'hoops', 'studs', 'swirls', 'drops'])
         ];
