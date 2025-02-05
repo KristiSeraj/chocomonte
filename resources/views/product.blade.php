@@ -23,7 +23,9 @@
                     </div>
                     <div class="border-t border-gray-200 pt-4">
                         <dt class="font-medium text-gray-900">Category</dt>
-                        <dd class="mt-2 text-sm text-gray-500">{{ $product['category']['name'] }}</dd>
+                        @foreach($product->categories as $category)
+                            <dd class="mt-2 text-sm text-gray-500"> {{ $category['name'] }} </dd>
+                        @endforeach
                     </div>
                     <div class="border-t border-gray-200 pt-4">
                         <dt class="font-medium text-gray-900">Includes</dt>

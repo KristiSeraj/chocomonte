@@ -16,14 +16,22 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
+        $name = [
+            'Minimalist',
+            'Boho Chic',
+            'Statement Earrings',
+            'Geometric',
+            'Nature-Inspired',
+        ];
+
+        static $index = 0;
+
+        $pickedName = $name[$index];
+
+        $index = ($index + 1) % count($name);
+
         return [
-            'name' => $this->faker->randomElement([
-                'Minimalist',
-                'Boho Chic',
-                'Statement Earrings',
-                'Geometric',
-                'Nature-Inspired',
-            ]),
+            'name' => $pickedName,
         ];
     }
 }

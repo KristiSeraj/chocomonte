@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Products;
+use App\Models\Product;
 
 Route::get('/', function () {
     return view('home', [
@@ -15,12 +15,12 @@ Route::get('/about', function() {
 
 Route::get('/products', function() {
     return view('products', [
-        'products' => Products::all(),
+        'products' => Product::all(),
     ]);
 });
 
 Route::get('/products/{id}', function($id) {
-    $product = Products::find($id);
+    $product = Product::with('categories')->findOrFail($id);
 
     return view('product', ['product' => $product]);
 });
