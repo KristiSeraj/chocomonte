@@ -17,17 +17,20 @@ class ProductsFactory extends Factory
      */
     public function definition(): array
     {
+        $titlesAndStyles = [
+            'Sunset Dangles' => 'dangles',
+            'Ocean Hoops' => 'hoops',
+            'Pastel Studs' => 'studs',
+            'Gold Swirls' => 'swirls',
+            'Floral Drops' => 'drops',
+        ];
+
+        $title = $this->faker->randomElement(array_keys($titlesAndStyles));
+
         return [
-            'title' => $this->faker->randomElement([
-                'Sunset Dangles',
-                'Ocean Hoops',
-                'Pastel Studs',
-                'Gold Swirls',
-                'Floral Drops',
-            ]),
-            'category_id' => Category::factory(),
+            'title' => $title,
             'price' => $this->faker->numberBetween(8, 30),
-            'style' => $this->faker->randomElement(['dangles', 'hoops', 'studs', 'swirls', 'drops'])
+            'style' => $titlesAndStyles[$title],
         ];
     }
 }
