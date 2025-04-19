@@ -15,7 +15,7 @@ Route::get('/about', function() {
 
 Route::get('/products', function() {
     return view('products.index', [
-        'products' => Product::latest()->paginate(10)
+        'products' => Product::latest()->simplePaginate(10)
     ]);
 });
 
@@ -30,6 +30,11 @@ Route::get('/products/{id}', function($id) {
 });
 
 Route::post('/products', function() {
+    request()->validate([
+        'title' => ['required', 'min:5'],
+        'style' => ['required', 'min:5'],
+        'price' => ['required', 'numeric']
+    ]);
    Product::create([
        'title' => request('title'),
        'style' => request('style'),
